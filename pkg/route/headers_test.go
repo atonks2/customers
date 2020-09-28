@@ -32,3 +32,26 @@ func TestRoute__GetNamespaceMissing(t *testing.T) {
 		t.Errorf("bogus HTTP status: %d", w.Code)
 	}
 }
+
+func TestRoute__GetOrganization(t *testing.T) {
+	w := httptest.NewRecorder()
+	req := httptest.NewRequest("GET", "/", nil)
+	req.Header.Set("x-organization", "foo")
+
+	if o := GetOrganization(w, req); o != "foo" {
+		t.Errorf("unexpected o: %v", o)
+	}
+}
+
+func TestRoute__GetOrganizationMissing(t *testing.T) {
+	w := httptest.NewRecorder()
+	req := httptest.NewRequest("GET", "/", nil)
+
+	if o := GetOrganization(w, req); o != "" {
+		t.Errorf("unexpected o: %v", o)
+	}
+
+	if w.Code != http.StatusBadRequest {
+		t.Errorf("unexpected HTTP status: %d", w.Code)
+	}
+}

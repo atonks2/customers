@@ -13,6 +13,7 @@ The following environmental variables can be set to configure behavior in Accoun
 | `HTTPS_KEY_FILE`  | Filepath of a private key matching the leaf certificate from `HTTPS_CERT_FILE`. | Empty |
 | `DATABASE_TYPE` | Which database option to use (Options: `sqlite`, `mysql`) | Default: `sqlite` |
 | `NAMESPACE_HEADER` | HTTP header to read for separating models and identifying their groupings. | Default: `X-Namespace` |
+| `ORGANIZATION_HEADER` | HTTP header to read for organization ID | Default: `X-Organization` |
 
 #### Fed
 
