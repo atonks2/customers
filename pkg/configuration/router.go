@@ -25,7 +25,7 @@ func getNamespaceConfig(logger log.Logger, repo Repository) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w = route.Responder(logger, w, r)
 
-		namespace := route.GetNamespace(w, r)
+		namespace := route.GetOrganization(w, r)
 		if namespace == "" {
 			return
 		}
@@ -43,7 +43,7 @@ func updateNamespaceConfig(logger log.Logger, repo Repository) http.HandlerFunc 
 	return func(w http.ResponseWriter, r *http.Request) {
 		w = route.Responder(logger, w, r)
 
-		namespace := route.GetNamespace(w, r)
+		namespace := route.GetOrganization(w, r)
 		if namespace == "" {
 			return
 		}

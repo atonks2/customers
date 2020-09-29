@@ -107,7 +107,7 @@ func createDisclaimer(logger log.Logger, disclaimerRepo DisclaimerRepository, do
 			return
 		}
 
-		customerID, namespace := route.GetCustomerID(w, r), route.GetNamespace(w, r)
+		customerID, namespace := route.GetCustomerID(w, r), route.GetOrganization(w, r)
 		if customerID == "" || namespace == "" {
 			return
 		}

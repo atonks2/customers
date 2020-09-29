@@ -54,7 +54,7 @@ func getCustomerDocuments(logger log.Logger, repo DocumentRepository) http.Handl
 	return func(w http.ResponseWriter, r *http.Request) {
 		w = route.Responder(logger, w, r)
 
-		customerID, namespace := route.GetCustomerID(w, r), route.GetNamespace(w, r)
+		customerID, namespace := route.GetCustomerID(w, r), route.GetOrganization(w, r)
 		if customerID == "" || namespace == "" {
 			return
 		}
@@ -86,7 +86,7 @@ func readDocumentType(v string) (string, error) {
 func uploadCustomerDocument(logger log.Logger, repo DocumentRepository, bucketFactory storage.BucketFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w = route.Responder(logger, w, r)
-		// TODO(adam): should we store x-namespace along with the Document?
+		// TODO(adam): should we store X-Organization along with the Document?
 
 		documentType, err := readDocumentType(r.URL.Query().Get("type"))
 		if err != nil {

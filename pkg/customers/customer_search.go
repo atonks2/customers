@@ -20,7 +20,7 @@ func searchCustomers(logger log.Logger, repo CustomerRepository) http.HandlerFun
 	return func(w http.ResponseWriter, r *http.Request) {
 		w = route.Responder(logger, w, r)
 
-		namespace := route.GetNamespace(w, r)
+		namespace := route.GetOrganization(w, r)
 		if namespace == "" {
 			return
 		}

@@ -237,7 +237,7 @@ func createCustomer(logger log.Logger, repo CustomerRepository, customerSSNStora
 		w = route.Responder(logger, w, r)
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
-		requestID, namespace := moovhttp.GetRequestID(r), route.GetNamespace(w, r)
+		requestID, namespace := moovhttp.GetRequestID(r), route.GetOrganization(w, r)
 		if namespace == "" {
 			return
 		}
@@ -301,7 +301,7 @@ func updateCustomer(logger log.Logger, repo CustomerRepository, customerSSNStora
 		w = route.Responder(logger, w, r)
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
-		requestID, namespace := moovhttp.GetRequestID(r), route.GetNamespace(w, r)
+		requestID, namespace := moovhttp.GetRequestID(r), route.GetOrganization(w, r)
 		if namespace == "" {
 			return
 		}

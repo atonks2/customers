@@ -10,21 +10,21 @@ import (
 	"testing"
 )
 
-func TestRoute__GetNamespace(t *testing.T) {
+func TestRoute__GetOrganization(t *testing.T) {
 	w := httptest.NewRecorder()
 	req := httptest.NewRequest("GET", "/ping", nil)
-	req.Header.Set("x-namespace", "foo")
+	req.Header.Set("X-Organization", "foo")
 
-	if ns := GetNamespace(w, req); ns != "foo" {
+	if ns := GetOrganization(w, req); ns != "foo" {
 		t.Errorf("unexpected ns: %v", ns)
 	}
 }
 
-func TestRoute__GetNamespaceMissing(t *testing.T) {
+func TestRoute__GetOrganizationMissing(t *testing.T) {
 	w := httptest.NewRecorder()
 	req := httptest.NewRequest("GET", "/ping", nil)
 
-	if ns := GetNamespace(w, req); ns != "" {
+	if ns := GetOrganization(w, req); ns != "" {
 		t.Errorf("unexpected ns: %v", ns)
 	}
 

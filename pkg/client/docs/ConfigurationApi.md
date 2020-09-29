@@ -32,7 +32,7 @@ Optional parameters are passed through a pointer to a GetConfigurationOpts struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xNamespace** | **optional.String**| Value used to separate and identify models | 
+ **xOrganization** | **optional.String**| Value used to separate and identify models | 
 
 ### Return type
 
@@ -77,7 +77,7 @@ Optional parameters are passed through a pointer to a UpdateConfigurationOpts st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **xNamespace** | **optional.String**| Value used to separate and identify models | 
+ **xOrganization** | **optional.String**| Value used to separate and identify models | 
 
 ### Return type
 
